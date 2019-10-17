@@ -42,7 +42,7 @@ returns:
   categoryCount: {
     sexual: 1
   },
-  censored: 'f****you john doe',
+  censored: '**** you john doe',
   profane: true,
   wordCount: {
     fuck: 1
@@ -60,6 +60,24 @@ returns:
 Generates a report from the given text.
 
     swearjar.scorecard("f-bomb you"); // {sexual: 1, inappropriate: 1}
+
+### swearjar.addRegex(text)
+
+Add a regex.
+
+    swearjar.addRegex('addedword?\\b', ['detected']);
+
+### swearjar.addSimple(text)
+
+Add a simple word.
+
+    swearjar.addSimple('addedword', ['detected']);
+
+### swearjar.addEmoji(text)
+
+Add an emoji word.
+
+    swearjar.addEmoji('1f596', ['detected']);
 
 ### swearjar.loadBadWords(path)
 
