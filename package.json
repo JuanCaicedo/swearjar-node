@@ -1,8 +1,8 @@
 {
-  "name": "swearjar",
+  "name": "swearjar-extended",
   "description": "Profanity detection and filtering library.",
-  "version": "0.2.0",
-  "homepage": "https://github.com/raymondjavaxx/swearjar-node",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ahmedengu/swearjar-node",
   "keywords": [
     "swear",
     "curse",
@@ -13,18 +13,18 @@
     "badwords"
   ],
   "author": {
-    "name": "Ramon Torres",
-    "email": "raymondjavaxx@gmail.com",
-    "url": "https://github.com/raymondjavaxx"
+    "name": "Ahmed Kamel Taha",
+    "email": "ahmedengu@gmail.com",
+    "url": "https://github.com/ahmedengu"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:raymondjavaxx/swearjar-node.git"
+    "url": "git@github.com:ahmedengu/swearjar-node.git"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/raymondjavaxx/swearjar-node/LICENSE"
+      "url": "https://github.com/ahmedengu/swearjar-node/blob/master/LICENSE"
     }
   ],
   "main": "lib/swearjar",
@@ -33,6 +33,8 @@
   },
   "devDependencies": {
     "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "mocha": "^6.2.1"
   },
   "scripts": {

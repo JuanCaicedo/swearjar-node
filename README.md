@@ -1,4 +1,4 @@
-# swearjar-node
+# swearjar-extended
 
 Profanity detection and filtering library.
 
@@ -6,7 +6,7 @@ Profanity detection and filtering library.
 
 ## Installation
 
-    npm install --save swearjar
+    npm install --save swearjar-extended
 
 ## Usage
 
@@ -24,6 +24,12 @@ Replaces profanity with asterisks.
 
     var clean = swearjar.censor("f-bomb you"); // **** you
 
+### swearjar.words(text)
+
+Get the words alongside there categories.
+
+    swearjar.words('fuck you john doe'); // { fuck: ['sexual'] }
+
 ### swearjar.scorecard(text)
 
 Generates a report from the given text.
@@ -40,11 +46,47 @@ NOTE: A US English default list located in the config directory is included and 
 
 A dictionary is just a plain JSON file containing an object where its keys are the words to check for and the values are arrays of categories where the words fall in.
 
-	{
-		"word1": ["category1", "category2"],
-		"word2": ["category1"],
-		"word3": ["category2"]
-	}
+```
+{
+  "regex": {
+    "\\w*fuck\\w*": [
+      "category1",
+      "category2"
+    ],
+    "word2": [
+      "category1"
+    ],
+    "word3": [
+      "category2"
+    ]
+  },
+  "simple": {
+    "word1": [
+      "category1",
+      "category2"
+    ],
+    "word2": [
+      "category1"
+    ],
+    "word3": [
+      "category2"
+    ]
+  },
+  "emoji": {
+    "1f4a9": [
+      "category1",
+      "category2"
+    ],
+    "word2": [
+      "category1"
+    ],
+    "word3": [
+      "category2"
+    ]
+  }
+}
+```
+
 
 ## Acknowledgements
 
