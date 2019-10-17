@@ -23,6 +23,24 @@ describe('swearjar.addRegex', () => {
     assert.equal(swearjar.profane('addedword you john doe'), true);
   });
 
+  it('should should detect bad words, word exist', () => {
+    swearjar.addRegex('hard ons?\\b', ['detected']);
+    assert.equal(swearjar.profane('i love you john doe'), false);
+    assert.equal(swearjar.profane('hard ons you john doe'), true);
+    assert.deepEqual(swearjar.words('hard ons you john doe'), {
+      'hard ons': [
+        'sexual',
+        'detected',
+      ],
+    });
+  });
+
+  it('should should detect bad words, categories string', () => {
+    swearjar.addRegex('addedword?\\b', 'detected');
+    assert.equal(swearjar.profane('i love you john doe'), false);
+    assert.equal(swearjar.profane('addedword you john doe'), true);
+  });
+
   it('should detect uppercase bad words', () => {
     swearjar.addRegex('addedword?\\b', ['detected']);
     assert.equal(swearjar.profane('ADDEDWORD you john doe'), true);
@@ -41,6 +59,24 @@ describe('swearjar.addSimple', () => {
     assert.equal(swearjar.profane('addedword you john doe'), true);
   });
 
+  it('should should detect bad words, word exist', () => {
+    swearjar.addSimple('anus', ['detected']);
+    assert.equal(swearjar.profane('i love you john doe'), false);
+    assert.equal(swearjar.profane('anus you john doe'), true);
+    assert.deepEqual(swearjar.words('anus you john doe'), {
+      anus: [
+        'sexual',
+        'detected',
+      ],
+    });
+  });
+
+  it('should should detect bad words, categories string', () => {
+    swearjar.addSimple('addedword', 'detected');
+    assert.equal(swearjar.profane('i love you john doe'), false);
+    assert.equal(swearjar.profane('addedword you john doe'), true);
+  });
+
   it('should detect uppercase bad words', () => {
     swearjar.addSimple('addedword', ['detected']);
     assert.equal(swearjar.profane('ADDEDWORD you john doe'), true);
@@ -55,6 +91,24 @@ describe('swearjar.addSimple', () => {
 describe('swearjar.addEmoji', () => {
   it('should should detect bad words', () => {
     swearjar.addEmoji('1f596', ['detected']);
+    assert.equal(swearjar.profane('i love you john doe'), false);
+    assert.equal(swearjar.profane('1f596 you john doe'), true);
+  });
+
+  it('should should detect bad words, word exist', () => {
+    swearjar.addEmoji('1f595', ['detected']);
+    assert.equal(swearjar.profane('i love you john doe'), false);
+    assert.equal(swearjar.profane('1f596 you john doe'), true);
+    assert.deepEqual(swearjar.words('1f595 you john doe'), {
+      '1f595': [
+        'insult',
+        'detected',
+      ],
+    });
+  });
+
+  it('should should detect bad words, categories string', () => {
+    swearjar.addEmoji('1f596', 'detected');
     assert.equal(swearjar.profane('i love you john doe'), false);
     assert.equal(swearjar.profane('1f596 you john doe'), true);
   });
