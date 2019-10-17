@@ -41,10 +41,51 @@ describe('swearjar.scorecard', () => {
 });
 
 describe('swearjar.words', () => {
-  it('should count bad words and categorize them', () => {
+  it('should return bad words and their categories', () => {
     assert.deepEqual(swearjar.words('fuck you john doe'), { fuck: ['sexual'] });
 
     assert.deepEqual(swearjar.words('fuck you john doe bitch fuck'), { fuck: ['sexual'], bitch: ['insult'] });
+  });
+});
+
+describe('swearjar.detailedProfane', () => {
+  it('should count bad words and categorize them and censor the text', () => {
+    assert.deepEqual(swearjar.detailedProfane('fuck you john doe'), {
+      categoryCount: {
+        sexual: 1,
+      },
+      censored: 'f****you john doe',
+      profane: true,
+      wordCount: {
+        fuck: 1,
+      },
+      words: {
+        fuck: [
+          'sexual',
+        ],
+      },
+    });
+
+    assert.deepEqual(swearjar.detailedProfane('fuck you john doe bitch fuck'), {
+      categoryCount: {
+        insult: 1,
+        sexual: 1,
+      },
+      censored: 'f****you john doe b*****fuck',
+      profane: true,
+      wordCount: {
+        bitch: 1,
+        fuck: 1,
+      },
+      words: {
+        bitch: [
+          'insult',
+        ],
+        fuck: [
+          'sexual',
+        ],
+      },
+    });
   });
 });
 

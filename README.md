@@ -29,6 +29,31 @@ Replaces profanity with asterisks.
 Get the words alongside there categories.
 
     swearjar.words('fuck you john doe'); // { fuck: ['sexual'] }
+    
+### swearjar.detailedProfane(text)
+
+Get the words alongside there categories, count and censor the text.
+
+    swearjar.detailedProfane('fuck you john doe')
+
+returns:    
+```
+{
+  categoryCount: {
+    sexual: 1
+  },
+  censored: 'f****you john doe',
+  profane: true,
+  wordCount: {
+    fuck: 1
+  },
+  words: {
+    fuck: [
+      'sexual'
+    ]
+  }
+}
+```
 
 ### swearjar.scorecard(text)
 
