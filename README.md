@@ -14,7 +14,7 @@ Profanity detection and filtering library.
 
 Returns true if the given string contains profanity.
 
-    var swearjar = require('swearjar');
+    var swearjar = require('swearjar-extended');
     swearjar.profane("hello there"); // false
     swearjar.profane("hello mother f-bomb"); // true
 
